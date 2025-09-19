@@ -1,0 +1,1512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete ML AI Roadmap 2025: Libraries, Projects & Mathematics</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-attachment: fixed;
+            color: #333;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            padding: 60px 40px;
+            border-radius: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            position: relative;
+            overflow: hidden;
+        }
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            z-index: -1;
+        }
+        .header h1 {
+            font-size: 3.5em;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            font-weight: 900;
+        }
+        .header p {
+            font-size: 1.3em;
+            color: #555;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .header-nav {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .header-nav a {
+            color: white;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        .header-nav a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 35px 0 0;
+        }
+        .stat-card {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 25px;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .stat-number {
+            font-size: 2.8em;
+            font-weight: 900;
+            color: #667eea;
+            display: block;
+        }
+        .stat-label {
+            font-size: 0.95em;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+        .main-content {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+        
+        .search-container {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .search-box {
+            width: 100%;
+            max-width: 600px;
+            padding: 18px 25px;
+            font-size: 1.1em;
+            border: 3px solid #e0e0e0;
+            border-radius: 30px;
+            background: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        .search-box:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 5px 30px rgba(102, 126, 234, 0.3);
+            transform: translateY(-2px);
+        }
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin: 25px 0 40px;
+        }
+        .filter-btn {
+            background: white;
+            color: #555;
+            border: 2px solid #e0e0e0;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        .filter-btn:hover {
+            border-color: #667eea;
+            color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.2);
+        }
+        .filter-btn.active {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border-color: #667eea;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .category {
+            background: white;
+            border-radius: 25px;
+            padding: 35px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+        .category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+        .category:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+        .category-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid rgba(102, 126, 234, 0.2);
+        }
+        .category-icon {
+            font-size: 3em;
+            margin-right: 20px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+        }
+        .category-info h2 {
+            font-size: 2em;
+            color: #667eea;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        .category-count {
+            background: linear-gradient(45deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
+            color: #667eea;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+        .libraries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+        }
+        .library-card {
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            border: 2px solid #e9ecef;
+            border-radius: 15px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .library-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        .library-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .library-card .library-description {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        .library-card:hover {
+            background: white;
+            border-color: #667eea;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.2);
+        }
+        .library-name {
+            font-weight: 700;
+            color: #667eea;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        .popularity-indicator {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        .popularity-indicator.essential {
+            background: linear-gradient(45deg, #28a745, #20c997);
+        }
+        .popularity-indicator.important {
+            background: linear-gradient(45deg, #ffc107, #fd7e14);
+        }
+        .popularity-indicator.useful {
+            background: linear-gradient(45deg, #6c757d, #495057);
+        }
+        
+        #math-foundations {
+            padding-top: 40px;
+            margin-top: 50px;
+            border-top: 3px solid rgba(102, 126, 234, 0.2);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-header h1 {
+            font-size: 3.2em;
+            color: #333;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+            margin-bottom: 15px;
+        }
+        .section-header p {
+            font-size: 1.2em;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .concept-card {
+            background: white;
+            border-radius: 25px;
+            padding: 40px;
+            margin-bottom: 35px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+            position: relative;
+        }
+        .concept-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+        .concept-card h2 {
+            font-size: 2.3em;
+            color: #667eea;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e0e0e0;
+            font-weight: 700;
+        }
+        .concept-card h3 {
+            font-size: 1.7em;
+            color: #764ba2;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        .concept-card h4 {
+            font-size: 1.4em;
+            color: #667eea;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .explanation {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        .text-content {
+            flex: 1 1 350px;
+        }
+        
+        .visual-example {
+            flex: 1 1 300px;
+            min-height: 200px;
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            border-radius: 15px;
+            padding: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #e9ecef;
+            font-family: 'Monaco', 'Consolas', monospace;
+            font-weight: 500;
+        }
+        
+        .importance {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+            border-left: 5px solid #667eea;
+            padding: 20px;
+            margin-top: 25px;
+            border-radius: 0 12px 12px 0;
+            box-shadow: 0 3px 10px rgba(102, 126, 234, 0.1);
+        }
+        .math-applications {
+            background: linear-gradient(135deg, rgba(118, 75, 162, 0.05), rgba(102, 126, 234, 0.05));
+            border-left: 5px solid #764ba2;
+            padding: 20px;
+            margin-top: 25px;
+            border-radius: 0 12px 12px 0;
+            box-shadow: 0 3px 10px rgba(118, 75, 162, 0.1);
+        }
+        .formula-box {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 12px;
+            font-family: 'Monaco', 'Consolas', monospace;
+            margin: 20px 0;
+            font-size: 1.1em;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            border: 1px solid #4a5568;
+        }
+        /* Enhanced Modal Styles */
+        .modal-overlay { 
+            display: none; 
+            position: fixed; 
+            z-index: 1000; 
+            left: 0; 
+            top: 0; 
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0,0,0,0.7); 
+            backdrop-filter: blur(5px);
+            align-items: center; 
+            justify-content: center; 
+        }
+        
+        .modal-content { 
+            background: white; 
+            margin: auto; 
+            padding: 40px; 
+            border-radius: 25px; 
+            width: 90%; 
+            max-width: 700px; 
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3); 
+            position: relative; 
+            animation: modalFadeIn 0.3s ease; 
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        @keyframes modalFadeIn { 
+            from { opacity: 0; transform: scale(0.9) translateY(20px); } 
+            to { opacity: 1; transform: scale(1) translateY(0); } 
+        }
+        
+        .modal-close { 
+            color: #aaa; 
+            position: absolute; 
+            top: 20px; 
+            right: 30px; 
+            font-size: 32px; 
+            font-weight: bold; 
+            cursor: pointer; 
+            transition: color 0.3s;
+        }
+        .modal-close:hover {
+            color: #667eea;
+        }
+        
+        .modal-header h2 {
+            color: #667eea;
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        .modal-section h3 { 
+            color: #333; 
+            margin-bottom: 10px; 
+            font-size: 1.4em; 
+            font-weight: 600;
+        }
+        .modal-section h4 { 
+            color: #667eea; 
+            margin-bottom: 8px; 
+            font-size: 1.2em; 
+            margin-top: 20px;
+        }
+        
+        .modal-section ul { 
+            margin-left: 25px; 
+            margin-bottom: 25px; 
+        }
+        .modal-section li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+        
+        #modal-project-features { list-style-type: none; padding-left: 0; }
+        #modal-project-features li::before { content: '✅ '; margin-right: 8px; }
+        #modal-math-concepts { list-style-type: none; padding-left: 0; }
+        #modal-math-concepts li::before { content: '🧠 '; margin-right: 8px; }
+        
+        .install-commands { 
+            background: #2d3748; 
+            color: #e2e8f0; 
+            padding: 25px; 
+            border-radius: 12px; 
+            font-family: 'Monaco', 'Consolas', monospace; 
+            position: relative; 
+            margin-top: 20px;
+            border: 1px solid #4a5568;
+        }
+        
+        .copy-btn { 
+            position: absolute; 
+            top: 20px; 
+            right: 20px; 
+            background: #667eea; 
+            color: white; 
+            border: none; 
+            padding: 8px 15px; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .copy-btn:hover {
+            background: #764ba2;
+            transform: translateY(-1px);
+        }
+        .learning-path {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            border: 2px solid rgba(102, 126, 234, 0.2);
+        }
+        .learning-path h3 {
+            color: #667eea;
+            font-size: 1.6em;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        .path-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .path-step {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+        .path-step:hover {
+            border-color: #667eea;
+            transform: translateY(-3px);
+        }
+        .step-number {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin: 0 auto 15px;
+        }
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5em;
+            }
+            
+            .category-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .explanation {
+                flex-direction: column;
+            }
+            
+            .visual-example {
+                min-height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🤖 Complete ML AI Roadmap 2025</h1>
+            <p>Master Machine Learning and AI with this comprehensive guide covering 50+ libraries, hands-on projects, and all the mathematical foundations you need to succeed in 2025.</p>
+             <div class="header-nav">
+                <a href="#libraries">Explore Libraries</a>
+                <a href="#math-foundations">Learn Mathematics</a>
+                <a href="#learning-paths">Learning Paths</a>
+            </div>
+            <div class="stats">
+                <div class="stat-card">
+                    <span id="library-count" class="stat-number">...</span>
+                    <span class="stat-label">Libraries</span>
+                </div>
+                <div class="stat-card">
+                    <span id="category-count" class="stat-number">...</span>
+                    <span class="stat-label">Categories</span>
+                </div>
+                <div class="stat-card">
+                    <span id="project-count" class="stat-number">...</span>
+                    <span class="stat-label">Projects</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">2025</span>
+                    <span class="stat-label">Updated</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <div id="libraries">
+                <div class="search-container">
+                    <input type="text" id="search-box" class="search-box" placeholder="Search libraries by name, description, or use case..." onkeyup="filterAndSearch()">
+                </div>
+                <div class="filter-buttons" id="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">All Libraries</button>
+                    <button class="filter-btn" data-filter="essential">Essential Only</button>
+                    <button class="filter-btn" data-filter="Deep Learning">Deep Learning</button>
+                    <button class="filter-btn" data-filter="Natural Language Processing">NLP</button>
+                    <button class="filter-btn" data-filter="Computer Vision">Computer Vision</button>
+                    <button class="filter-btn" data-filter="MLOps">MLOps</button>
+                    <button class="filter-btn" data-filter="Generative AI">Generative AI</button>
+                    <button class="filter-btn" data-filter="Time Series">Time Series</button>
+                </div>
+                
+                <div class="category-grid" id="category-grid">
+                    <!-- Dynamically populated by JavaScript -->
+                </div>
+            </div>
+
+            <div id="math-foundations">
+                <div class="section-header">
+                    <h1>Mathematical Foundations of AI</h1>
+                    <p>Master the essential mathematics that powers modern machine learning and artificial intelligence</p>
+                </div>
+                <!-- Linear Algebra Section -->
+                <div class="concept-card">
+                    <h2>1. Linear Algebra: The Language of Data</h2>
+                    <p>Linear Algebra provides the mathematical framework for representing and manipulating data in machine learning. Every piece of data, from images to text, is ultimately represented as vectors and matrices that can be processed by algorithms.</p>
+                    
+                    <h3>Vectors: Data Points in Space</h3>
+                    <div class="explanation">
+                        <div class="text-content">
+                            <p>A <strong>vector</strong> is an ordered collection of numbers representing a data point in multi-dimensional space. In ML, everything from word embeddings to image features is represented as vectors.</p>
+                            
+                            <h4>Key Operations:</h4>
+                            <ul>
+                                <li><strong>Dot Product:</strong> Measures similarity between vectors</li>
+                                <li><strong>Vector Addition:</strong> Combining features or data points</li>
+                                <li><strong>Scalar Multiplication:</strong> Scaling features</li>
+                                <li><strong>Norm:</strong> Measuring vector magnitude/length</li>
+                            </ul>
+                            
+                            <div class="importance">
+                                <strong>Why it matters:</strong> Cosine similarity for recommendations, word embeddings in NLP, feature vectors in any ML model - vectors are everywhere in AI.
+                            </div>
+                        </div>
+                        <div class="visual-example">
+                            <div>
+                                <p><strong>Vector Representation:</strong></p>
+                                <p>House = [3, 2000, 10]</p>
+                                <p>(bedrooms, sqft, age)</p>
+                                <br>
+                                <p><strong>Dot Product:</strong></p>
+                                <p>v₁ · v₂ = |v₁| |v₂| cos(θ)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <h3>Matrices: Transforming Data</h3>
+                    <div class="explanation">
+                        <div class="text-content">
+                            <p>Matrices are 2D arrays of numbers that represent datasets (rows = samples, columns = features) and linear transformations. Neural network weights are matrices that transform input data.</p>
+                            
+                            <h4>Essential Matrix Operations:</h4>
+                            <ul>
+                                <li><strong>Matrix Multiplication:</strong> Core operation in neural networks</li>
+                                <li><strong>Transpose:</strong> Flipping rows and columns</li>
+                                <li><strong>Inverse:</strong> Used in solving linear systems</li>
+                                <li><strong>Eigenvalues/Eigenvectors:</strong> Principal Component Analysis (PCA)</li>
+                            </ul>
+                            
+                            <div class="math-applications">
+                                <strong>ML Applications:</strong> Every neural network layer, PCA for dimensionality reduction, covariance matrices in statistics, image convolutions.
+                            </div>
+                        </div>
+                        <div class="visual-example">
+                            <div>
+                                <p><strong>Neural Network Layer:</strong></p>
+                                <pre>Output = Input × Weights + Bias</pre>
+                                <p><strong>Matrix Form:</strong></p>
+                                <pre>[y₁]   [w₁₁ w₁₂] [x₁]   [b₁]
+[y₂] = [w₂₁ w₂₂] [x₂] + [b₂]</pre>
+                            </div>
+                        </div>
+                    </div>
+                    <h3>Tensors: Multi-dimensional Data</h3>
+                    <div class="explanation">
+                        <div class="text-content">
+                            <p>Tensors generalize vectors (1D) and matrices (2D) to any number of dimensions. Modern deep learning frameworks are built around tensor operations.</p>
+                            
+                            <h4>Tensor Examples:</h4>
+                            <ul>
+                                <li><strong>0D Tensor (Scalar):</strong> Single number</li>
+                                <li><strong>1D Tensor (Vector):</strong> Array of numbers</li>
+                                <li><strong>2D Tensor (Matrix):</strong> Spreadsheet of data</li>
+                                <li><strong>3D Tensor:</strong> RGB image (height × width × channels)</li>
+                                <li><strong>4D Tensor:</strong> Batch of images (batch × height × width × channels)</li>
+                            </ul>
+                            
+                            <div class="importance">
+                                <strong>Deep Learning Connection:</strong> All data in neural networks flows as tensors. Understanding tensor shapes and operations is crucial for debugging and designing architectures.
+                            </div>
+                        </div>
+                        <div class="visual-example">
+                            <div>
+                                <p><strong>Image Tensor Shape:</strong></p>
+                                <p>Single Image: (224, 224, 3)</p>
+                                <p>Batch: (32, 224, 224, 3)</p>
+                                <br>
+                                <p><strong>Text Tensor:</strong></p>
+                                <p>Sequence: (seq_length, vocab_size)</p>
+                                <p>Batch: (batch, seq_length, embedding_dim)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Calculus Section -->
+                <div class="concept-card">
+                    <h2>2. Calculus: The Engine of Learning</h2>
+                    <p>Calculus, specifically derivatives, enables machine learning models to learn by quantifying how changes in parameters affect the output. This is the mathematical foundation of optimization and learning.</p>
+                    
+                    <h3>Derivatives: Rate of Change</h3>
+                    <div class="explanation">
+                        <div class="text-content">
+                            <p>A <strong>derivative</strong> measures how a function changes as its input changes. In ML, we use derivatives to understand how the loss function changes with respect to model parameters.</p>
+                            
+                            <div class="formula-box">
+                                f'(x) = lim[h→0] (f(x+h) - f(x)) / h
+                            </div>
+                            
+                            <h4>Key Derivative Rules:</h4>
+                            <ul>
+                                <li><strong>Power Rule:</strong> d/dx(x^n) = nx^(n-1)</li>
+                                <li><strong>Product Rule:</strong> d/dx(fg) = f'g + fg'</li>
+                                <li><strong>Chain Rule:</strong> d/dx(f(g(x))) = f'(g(x))g'(x)</li>
+                                <li><strong>Partial Derivatives:</strong> ∂f/∂x for multivariable functions</li>
+                            </ul>
+                            
+                            <div class="importance">
+                                <strong>ML Connection:</strong> Computing gradients for backpropagation, finding optimal parameters, understanding how loss changes with weights.
+                            </div>
+                        </div>
+                        <div class="visual-example">
+                            <div>
+                                <p><strong>Loss Function:</strong></p>
+                                <p>L = (y_pred - y_true)²</p>
+                                <br>
+                                <p><strong>Derivative:</strong></p>
+                                <p>dL/dw = 2(y_pred - y_true) * dy_pred/dw</p>
+                                <br>
+                                <p><strong>Update Rule:</strong></p>
+                                <p>w_new = w_old - α * dL/dw</p>
+                            </div>
+                        </div>
+                    </div>
+                    <h3>Gradients: Multi-dimensional Derivatives</h3>
+                    <div class="explanation">
+                        <div class="text-content">
+                            <p>The <strong>gradient</strong> is the vector of partial derivatives with respect to all parameters. It points in the direction of steepest ascent of the function.</p>
+                            
+                            <div class="formula-box">
+                                ∇f(x,y) = [∂f/∂x, ∂f/∂y]
+                            </div>
+                            
+                            <h4>Gradient Descent Algorithm:</h4>
+                            <ol>
+                                <li>Compute the gradient of the loss function</li>
+                                <li>Move in the opposite direction (steepest descent)</li>
+                                <li>Repeat until convergence</li>
+                            </ol>
+                            
+                            <div class="math-applications">
+                                <strong>Variants:</strong> Stochastic Gradient Descent (SGD), Adam, RMSprop, AdaGrad - all based on gradient computation with different update strategies.
+                            </div>
+                        </div>
+                        <div class="visual-example">
+                            <div style="text-align: center;">
+                                <p><strong>Gradient Descent:</strong></p>
+                                <svg viewBox="0 0 200 120" style="max-width: 180px;">
+                                    <path d="M 10 100 Q 100 20, 190 100" stroke="#667eea" stroke-width="3" fill="none"/>
+                                    <circle cx="40" cy="85" r="4" fill="#ff6347"/>
+                                    <line x1="40" y1="85" x2="70" y2="60" stroke="#ff6347" stroke-width="2" marker-end="url(#arrow)"/>
+                                    <circle cx="70" cy="60" r="4" fill="#ff6347" />
+                                    <line x1="70" y1="60" x2="100" y2="40" stroke="#ff6347" stroke-width="2" marker-end="url(#arrow)"/>
+                                    <circle cx="100" cy="40" r="4" fill="#28a745"/>
+                                    <text x="105" y="35" font-size="10px">Global Minimum</text>
+                                    <defs>
+                                        <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                            <polygon points="0 0, 10 3.5, 0 7" fill="#ff6347" />
+                                        </marker>
+                                    </defs>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <h3>Backpropagation: Chain Rule in Action</h3>
+                    <div class="explanation">
+                        <div class="text-content">
+                            <p><strong>Backpropagation</strong> efficiently computes gradients in neural networks using the chain rule. It propagates error backwards through the network layers.</p>
+                            
+                            <h4>The Process:</h4>
+                            <ol>
+                                <li><strong>Forward Pass:</strong> Compute predictions</li>
+                                <li><strong>Compute Loss:</strong> Compare with true values</li>
+                                <li><strong>Backward Pass:</strong> Compute gradients layer by layer</li>
+                                <li><strong>Update Weights:</strong> Use gradients to improve parameters</li>
+                            </ol>
+                            
+                            <div class="importance">
+                                <strong>Why Revolutionary:</strong> Before backpropagation, training deep networks was computationally infeasible. This algorithm made modern deep learning possible.
+                            </div>
+                        </div>
+                        <div class="visual-example">
+                            <div style="text-align: center;">
+                                <p><strong>Neural Network Flow:</strong></p>
+                                <p>Input → Hidden → Output</p>
+                                <p>↓ Forward Pass ↓</p>
+                                <p>Prediction & Loss</p>
+                                <p>↑ Backward Pass ↑</p>
+                                <p>Gradients & Updates</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Probability & Statistics Section -->
+                <div class="concept-card">
+                    <h2>3. Probability & Statistics: Quantifying Uncertainty</h2>
+                    <p>Machine learning is fundamentally about making predictions under uncertainty. Probability theory provides the mathematical framework to model uncertainty, while statistics gives us tools to analyze data and evaluate model performance.</p>
+                    <h3>Probability Distributions</h3>
+                    <div class="explanation">
+                        <div class="text-content">
+                            <p>A <strong>probability distribution</strong> describes the likelihood of different outcomes. Understanding distributions is crucial for modeling data and interpreting model outputs.</p>
+                            
+                            <h4>Key Distributions in ML:</h4>
+                            <ul>
+                                <li><strong>Normal (Gaussian):</strong> Continuous data, weight initialization</li>
+                                <li><strong>Bernoulli:</strong> Binary outcomes (classification)</li>
+                                <li><strong>Multinomial:</strong> Multiple categories (multi-class classification)</li>
+                                <li><strong>Poisson:</strong> Count data, rare events</li>
+                                <li><strong>Exponential:</strong> Time between events</li>
+                            </ul>
+                            
+                            <div class="importance">
+                                <strong>ML Applications:</strong> Softmax outputs probability distributions, VAEs use latent distributions, Bayesian neural networks model parameter uncertainty.
+                            </div>
+                        </div>
+                        <div class="visual-example">
+                            <div>
+                                <p><strong>Normal Distribution:</strong></p>
+                                <div class="formula-box" style="font-size: 0.9em;">
+                                    f(x) = (1/√(2πσ²)) * e^(-(x-μ)²/2σ²)
+                                </div>
+                                <p><strong>Softmax (Classification):</strong></p>
+                                <div class="formula-box" style="font-size: 0.9em;">
+                                    P(y_i) = e^(z_i) / Σe^(z_j)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h3>Bayes' Theorem</h3>
+                    <div class="explanation">
+                        <div class="text-content">
+                            <p><strong>Bayes' Theorem</strong> provides a way to update beliefs given new evidence. It's fundamental to many ML algorithms and uncertainty quantification.</p>
+                            
+                            <div class="formula-box">
+                                P(A|B) = P(B|A) * P(A) / P(B)
+                            </div>
+                            
+                            <h4>Components:</h4>
+                            <ul>
+                                <li><strong>P(A|B):</strong> Posterior probability</li>
+                                <li><strong>P(B|A):</strong> Likelihood</li>
+                                <li><strong>P(A):</strong> Prior probability</li>
+                                <li><strong>P(B):</strong> Evidence</li>
+                            </ul>
+                            
+                            <div class="math-applications">
+                                <strong>ML Applications:</strong> Naive Bayes classifiers, Bayesian optimization, A/B testing, medical diagnosis models, spam filtering.
+                            </div>
+                        </div>
+                        <div class="visual-example">
+                            <div>
+                                <p><strong>Email Spam Example:</strong></p>
+                                <p>P(Spam|"Free Money") = </p>
+                                <p>P("Free Money"|Spam) * P(Spam)</p>
+                                <p>/ P("Free Money")</p>
+                                <br>
+                                <p><strong>Medical Diagnosis:</strong></p>
+                                <p>P(Disease|Positive Test) = </p>
+                                <p>P(Positive|Disease) * P(Disease)</p>
+                                <p>/ P(Positive Test)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <h3>Statistical Inference & Hypothesis Testing</h3>
+                    <div class="explanation">
+                        <div class="text-content">
+                            <p>Statistical inference helps us draw conclusions about populations from samples and test whether our models are performing significantly better than baselines.</p>
+                            
+                            <h4>Key Concepts:</h4>
+                            <ul>
+                                <li><strong>Confidence Intervals:</strong> Range of plausible values</li>
+                                <li><strong>P-values:</strong> Evidence against null hypothesis</li>
+                                <li><strong>Type I/II Errors:</strong> False positives/negatives</li>
+                                <li><strong>Statistical Significance:</strong> α = 0.05 threshold</li>
+                                <li><strong>Effect Size:</strong> Practical significance</li>
+                            </ul>
+                            
+                            <div class="importance">
+                                <strong>ML Relevance:</strong> A/B testing for model deployment, comparing algorithm performance, understanding if improvements are statistically significant.
+                            </div>
+                        </div>
+                        <div class="visual-example">
+                            <div>
+                                <p><strong>Hypothesis Testing:</strong></p>
+                                <p>H₀: Model A = Model B</p>
+                                <p>H₁: Model A > Model B</p>
+                                <br>
+                                <p><strong>T-test:</strong></p>
+                                <p>t = (x̄₁ - x̄₂) / (s√(1/n₁ + 1/n₂))</p>
+                                <br>
+                                <p>If p < 0.05 → Reject H₀</p>
+                            </div>
+                        </div>
+                    </div>
+                    <h3>Evaluation Metrics</h3>
+                    <div class="explanation">
+                        <div class="text-content">
+                            <p>Choosing the right evaluation metrics is crucial for assessing model performance and making informed decisions about model deployment.</p>
+                            
+                            <h4>Classification Metrics:</h4>
+                            <ul>
+                                <li><strong>Accuracy:</strong> Overall correctness</li>
+                                <li><strong>Precision:</strong> True Positives / (True Positives + False Positives)</li>
+                                <li><strong>Recall:</strong> True Positives / (True Positives + False Negatives)</li>
+                                <li><strong>F1-Score:</strong> Harmonic mean of precision and recall</li>
+                                <li><strong>ROC-AUC:</strong> Area under the ROC curve</li>
+                            </ul>
+                            
+                            <h4>Regression Metrics:</h4>
+                            <ul>
+                                <li><strong>MSE:</strong> Mean Squared Error</li>
+                                <li><strong>MAE:</strong> Mean Absolute Error</li>
+                                <li><strong>R²:</strong> Coefficient of determination</li>
+                                <li><strong>RMSE:</strong> Root Mean Squared Error</li>
+                            </ul>
+                            
+                            <div class="math-applications">
+                                <strong>Context Matters:</strong> Medical diagnosis prioritizes recall (catch all diseases), spam filtering prioritizes precision (avoid false positives).
+                            </div>
+                        </div>
+                        <div class="visual-example">
+                            <div>
+                                <p><strong>Confusion Matrix:</strong></p>
+                                <table style="border-collapse: collapse; margin: 10px auto; font-size: 0.9em;">
+                                    <tr>
+                                        <td style="border: 1px solid #666; padding: 5px;"></td>
+                                        <td style="border: 1px solid #666; padding: 5px; font-weight: bold;">Pred +</td>
+                                        <td style="border: 1px solid #666; padding: 5px; font-weight: bold;">Pred -</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #666; padding: 5px; font-weight: bold;">True +</td>
+                                        <td style="border: 1px solid #666; padding: 5px; background: #d4edda;">TP</td>
+                                        <td style="border: 1px solid #666; padding: 5px; background: #f8d7da;">FN</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #666; padding: 5px; font-weight: bold;">True -</td>
+                                        <td style="border: 1px solid #666; padding: 5px; background: #f8d7da;">FP</td>
+                                        <td style="border: 1px solid #666; padding: 5px; background: #d4edda;">TN</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Optimization Section -->
+                <div class="concept-card">
+                    <h2>4. Optimization: Finding the Best Parameters</h2>
+                    <p>Optimization is the process of finding the best parameters for a model. Understanding optimization algorithms is crucial for training effective machine learning models and debugging training issues.</p>
+                    <h3>Loss Functions</h3>
+                    <div class="explanation">
+                        <div class="text-content">
+                            <p>A <strong>loss function</strong> quantifies how wrong the model's predictions are. Different problems require different loss functions, and the choice significantly impacts training dynamics.</p>
+                            
+                            <h4>Common Loss Functions:</h4>
+                            <ul>
+                                <li><strong>Mean Squared Error (MSE):</strong> Regression problems</li>
+                                <li><strong>Cross-Entropy:</strong> Classification problems</li>
+                                <li><strong>Hinge Loss:</strong> Support Vector Machines</li>
+                                <li><strong>Huber Loss:</strong> Robust regression</li>
+                                <li><strong>Focal Loss:</strong> Imbalanced classification</li>
+                            </ul>
+                            
+                            <div class="formula-box">
+                                MSE = (1/n) * Σ(y_pred - y_true)²
+                                Cross-Entropy = -Σ y_true * log(y_pred)
+                            </div>
+                            
+                            <div class="importance">
+                                <strong>Key Insight:</strong> The loss function defines what "good" means for your model. Choose carefully based on your problem and business objectives.
+                            </div>
+                        </div>
+                        <div class="visual-example">
+                            <div>
+                                <p><strong>Loss Landscape:</strong></p>
+                                <svg viewBox="0 0 200 120" style="max-width: 180px;">
+                                    <path d="M 10 100 Q 50 20, 100 40 Q 150 20, 190 100" stroke="#667eea" stroke-width="3" fill="none"/>
+                                    <circle cx="60" cy="30" r="3" fill="#28a745"/>
+                                    <circle cx="140" cy="30" r="3" fill="#ffc107"/>
+                                    <text x="45" y="20" font-size="8px">Global Min</text>
+                                    <text x="125" y="20" font-size="8px">Local Min</text>
+                                </svg>
+                                <p style="font-size: 0.9em; text-align: center;">Optimization seeks the global minimum</p>
+                            </div>
+                        </div>
+                    </div>
+                    <h3>Advanced Optimization Algorithms</h3>
+                    <div class="explanation">
+                        <div class="text-content">
+                            <p>Modern deep learning uses sophisticated optimization algorithms that adapt learning rates and handle the challenges of high-dimensional parameter spaces.</p>
+                            
+                            <h4>Popular Optimizers:</h4>
+                            <ul>
+                                <li><strong>SGD with Momentum:</strong> Accelerates convergence</li>
+                                <li><strong>Adam:</strong> Adaptive learning rates per parameter</li>
+                                <li><strong>AdaGrad:</strong> Adapts to sparse gradients</li>
+                                <li><strong>RMSprop:</strong> Handles non-stationary objectives</li>
+                                <li><strong>AdamW:</strong> Adam with weight decay</li>
+                            </ul>
+                            
+                            <h4>Adam Update Rule:</h4>
+                            <div class="formula-box" style="font-size: 0.9em;">
+                                m_t = β₁m_{t-1} + (1-β₁)g_t
+                                v_t = β₂v_{t-1} + (1-β₂)g_t²
+                                θ_t = θ_{t-1} - α * m̂_t / (√v̂_t + ε)
+                            </div>
+                            
+                            <div class="math-applications">
+                                <strong>Practical Tips:</strong> Adam is often the default choice. Use learning rate schedules. Monitor loss curves to detect overfitting or poor convergence.
+                            </div>
+                        </div>
+                        <div class="visual-example">
+                            <div style="text-align: center;">
+                                <p><strong>Optimizer Comparison:</strong></p>
+                                <p>SGD: Steady but slow</p>
+                                <p>Momentum: Faster convergence</p>
+                                <p>Adam: Adaptive & robust</p>
+                                <br>
+                                <p><strong>Learning Rate Schedule:</strong></p>
+                                <p>α(t) = α₀ * γ^(t/step_size)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <h3>Regularization: Preventing Overfitting</h3>
+                    <div class="explanation">
+                        <div class="text-content">
+                            <p><strong>Regularization</strong> techniques prevent overfitting by constraining the model complexity or adding noise during training.</p>
+                            
+                            <h4>Regularization Techniques:</h4>
+                            <ul>
+                                <li><strong>L1 Regularization (Lasso):</strong> Sparse weights</li>
+                                <li><strong>L2 Regularization (Ridge):</strong> Small weights</li>
+                                <li><strong>Dropout:</strong> Random neuron deactivation</li>
+                                <li><strong>Batch Normalization:</strong> Stabilizes training</li>
+                                <li><strong>Early Stopping:</strong> Stop before overfitting</li>
+                                <li><strong>Data Augmentation:</strong> Increase training diversity</li>
+                            </ul>
+                            
+                            <div class="formula-box">
+                                L1: Loss + λ * Σ|w_i|
+                                L2: Loss + λ * Σw_i²
+                            </div>
+                            
+                            <div class="importance">
+                                <strong>Bias-Variance Tradeoff:</strong> Regularization increases bias but reduces variance, leading to better generalization on new data.
+                            </div>
+                        </div>
+                        <div class="visual-example">
+                            <div>
+                                <p><strong>Overfitting vs Regularized:</strong></p>
+                                <svg viewBox="0 0 200 100" style="max-width: 180px;">
+                                    <path d="M 10 80 Q 50 20, 100 50 Q 150 80, 190 30" stroke="#ff6347" stroke-width="2" fill="none"/>
+                                    <path d="M 10 85 L 190 40" stroke="#28a745" stroke-width="2" fill="none"/>
+                                    <circle cx="30" cy="70" r="2" fill="#333"/>
+                                    <circle cx="60" cy="65" r="2" fill="#333"/>
+                                    <circle cx="90" cy="45" r="2" fill="#333"/>
+                                    <circle cx="120" cy="55" r="2" fill="#333"/>
+                                    <circle cx="150" cy="50" r="2" fill="#333"/>
+                                    <circle cx="180" cy="45" r="2" fill="#333"/>
+                                    <text x="10" y="95" font-size="8px" fill="#ff6347">Overfitted</text>
+                                    <text x="130" y="95" font-size="8px" fill="#28a745">Regularized</text>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Information Theory Section -->
+                <div class="concept-card">
+                    <h2>5. Information Theory: Measuring Information</h2>
+                    <p>Information theory provides mathematical tools to quantify information, uncertainty, and the efficiency of communication. These concepts are fundamental to understanding many machine learning algorithms and loss functions.</p>
+                    <h3>Entropy: Measuring Uncertainty</h3>
+                    <div class="explanation">
+                        <div class="text-content">
+                            <p><strong>Entropy</strong> quantifies the uncertainty or randomness in a probability distribution. Higher entropy means more uncertainty.</p>
+                            
+                            <div class="formula-box">
+                                H(X) = -Σ P(x) * log₂(P(x))
+                            </div>
+                            
+                            <h4>Properties of Entropy:</h4>
+                            <ul>
+                                <li><strong>Maximum:</strong> Uniform distribution has highest entropy</li>
+                                <li><strong>Minimum:</strong> Deterministic outcomes have zero entropy</li>
+                                <li><strong>Units:</strong> Measured in bits (log₂) or nats (ln)</li>
+                            </ul>
+                            
+                            <div class="importance">
+                                <strong>ML Applications:</strong> Decision tree splitting criteria, cross-entropy loss function, feature selection, model complexity measures.
+                            </div>
+                        </div>
+                        <div class="visual-example">
+                            <div>
+                                <p><strong>Entropy Examples:</strong></p>
+                                <p>Fair coin flip:</p>
+                                <p>H = -0.5*log₂(0.5) - 0.5*log₂(0.5) = 1 bit</p>
+                                <br>
+                                <p>Biased coin (0.9, 0.1):</p>
+                                <p>H = -0.9*log₂(0.9) - 0.1*log₂(0.1) ≈ 0.47 bits</p>
+                            </div>
+                        </div>
+                    </div>
+                    <h3>Cross-Entropy and KL Divergence</h3>
+                    <div class="explanation">
+                        <div class="text-content">
+                            <p><strong>Cross-entropy</strong> measures the difference between two probability distributions. <strong>KL divergence</strong> quantifies how one distribution differs from another.</p>
+                            
+                            <div class="formula-box">
+                                Cross-Entropy: H(p,q) = -Σ p(x) * log(q(x))
+                                KL Divergence: D_KL(p||q) = Σ p(x) * log(p(x)/q(x))
+                            </div>
+                            
+                            <h4>Key Relationships:</h4>
+                            <ul>
+                                <li>Cross-entropy = Entropy + KL Divergence</li>
+                                <li>KL divergence is always non-negative</li>
+                                <li>KL(p||q) ≠ KL(q||p) (not symmetric)</li>
+                            </ul>
+                            
+                            <div class="math-applications">
+                                <strong>Deep Learning:</strong> Cross-entropy loss for classification, KL divergence in VAEs and GANs, measuring model uncertainty.
+                            </div>
+                        </div>
+                        <div class="visual-example">
+                            <div>
+                                <p><strong>Classification Loss:</strong></p>
+                                <p>True: [0, 1, 0]</p>
+                                <p>Pred: [0.1, 0.8, 0.1]</p>
+                                <br>
+                                <p>Cross-entropy:</p>
+                                <p>-[0*log(0.1) + 1*log(0.8) + 0*log(0.1)]</p>
+                                <p>= -log(0.8) ≈ 0.223</p>
+                            </div>
+                        </div>
+                    </div>
+                    <h3>Mutual Information</h3>
+                    <div class="explanation">
+                        <div class="text-content">
+                            <p><strong>Mutual Information</strong> measures the amount of information shared between two variables. It quantifies how much knowing one variable tells us about another.</p>
+                            
+                            <div class="formula-box">
+                                I(X;Y) = Σ P(x,y) * log(P(x,y)/(P(x)*P(y)))
+                            </div>
+                            
+                            <h4>Properties:</h4>
+                            <ul>
+                                <li><strong>Symmetric:</strong> I(X;Y) = I(Y;X)</li>
+                                <li><strong>Non-negative:</strong> I(X;Y) ≥ 0</li>
+                                <li><strong>Independence:</strong> I(X;Y) = 0 if X and Y are independent</li>
+                            </ul>
+                            
+                            <div class="importance">
+                                <strong>Applications:</strong> Feature selection, understanding attention mechanisms, measuring dependencies in data.
+                            </div>
+                        </div>
+                        <div class="visual-example">
+                            <div style="text-align: center;">
+                                <p><strong>Information Diagram:</strong></p>
+                                <svg viewBox="0 0 200 100" style="max-width: 180px;">
+                                    <circle cx="70" cy="50" r="35" fill="rgba(102, 126, 234, 0.3)" stroke="#667eea" stroke-width="2"/>
+                                    <circle cx="130" cy="50" r="35" fill="rgba(118, 75, 162, 0.3)" stroke="#764ba2" stroke-width="2"/>
+                                    <text x="50" y="55" font-size="10px">H(X)</text>
+                                    <text x="140" y="55" font-size="10px">H(Y)</text>
+                                    <text x="95" y="55" font-size="8px">I(X;Y)</text>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Learning Paths Section -->
+                <div id="learning-paths" class="learning-path">
+                    <h3>Recommended Learning Paths</h3>
+                    <p>Choose your path based on your background and goals. Each path builds mathematical foundations alongside practical skills.</p>
+                    
+                    <div class="path-steps">
+                        <div class="path-step">
+                            <div class="step-number">1</div>
+                            <h4>Foundation Path</h4>
+                            <p>Start with NumPy, Pandas, Matplotlib. Master linear algebra and basic statistics. Build data analysis projects.</p>
+                        </div>
+                        <div class="path-step">
+                            <div class="step-number">2</div>
+                            <h4>Traditional ML Path</h4>
+                            <p>Learn Scikit-learn, probability theory, and optimization. Understand bias-variance tradeoff and cross-validation.</p>
+                        </div>
+                        <div class="path-step">
+                            <div class="step-number">3</div>
+                            <h4>Deep Learning Path</h4>
+                            <p>Master PyTorch/TensorFlow, calculus, and backpropagation. Study neural architectures and regularization.</p>
+                        </div>
+                        <div class="path-step">
+                            <div class="step-number">4</div>
+                            <h4>Specialization Path</h4>
+                            <p>Choose NLP, Computer Vision, or other domains. Learn domain-specific mathematics and state-of-the-art techniques.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal Structure -->
+    <div id="project-modal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <div class="modal-header">
+                <h2 id="modal-library-name">Library Name</h2>
+            </div>
+            <div class="modal-section project-idea">
+                <h3 id="modal-project-title">Project Title</h3>
+                <p id="modal-project-description">Project description goes here.</p>
+                <h4>Key Features:</h4>
+                <ul id="modal-project-features"></ul>
+            </div>
+            <div class="modal-section math-concepts">
+                <h4>Mathematical Concepts Used:</h4>
+                <ul id="modal-math-concepts"></ul>
+            </div>
+            <div class="modal-section installation-info">
+                <h4>Installation Instructions:</h4>
+                <div class="install-commands">
+                    <pre><code id="modal-install-command"></code></pre>
+                    <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // NOTE: This is a sample, expanded dataset. In a real app, this might come from a JSON file.
+    const librariesData = [
+        // Foundation & Core
+        { name: "NumPy", category: "Foundation & Core", icon: "🔧", popularity: "essential", description: "The fundamental package for scientific computing with Python.", tags: ["Arrays", "Math", "Linear Algebra"], install: "pip install numpy", project: { title: "Image Filter Engine", description: "Build a tool that applies filters (e.g., grayscale, invert) to an image by manipulating its underlying NumPy array data.", features: ["Load image into a NumPy array", "Apply various mathematical filters", "Save the modified array as an image"] }, math_concepts: ["Linear Algebra (Vectors, Matrices, Tensors)", "Array indexing and slicing", "Broadcasting rules"] },
+        { name: "Pandas", category: "Foundation & Core", icon: "🔧", popularity: "essential", description: "High-performance, easy-to-use data structures and data analysis tools.", tags: ["DataFrames", "Analysis", "CSV"], install: "pip install pandas", project: { title: "Video Game Sales Analyzer", description: "Analyze a dataset of video game sales to uncover trends like top-selling genres and publishers.", features: ["Load CSV into a DataFrame", "Clean data and handle missing values", "Perform groupby() and aggregation operations"] }, math_concepts: ["Descriptive Statistics (mean, median, std)", "Set Theory (for joins and merges)", "Data aggregation"] },
+        { name: "Matplotlib", category: "Foundation & Core", icon: "🔧", popularity: "essential", description: "A comprehensive library for creating static, animated, and interactive visualizations in Python.", tags: ["Plotting", "Visualization", "Charts"], install: "pip install matplotlib", project: { title: "Personal Finance Dashboard", description: "Visualize your monthly income and expenses from a CSV file using various plots.", features: ["Create a pie chart for expense categories", "Generate a bar chart for income vs. expenses", "Plot savings over time with a line chart"] }, math_concepts: ["Coordinate Systems (Cartesian)", "Data Scaling & Normalization", "Visual encoding of data"] },
+        { name: "Seaborn", category: "Foundation & Core", icon: "🔧", popularity: "important", description: "Statistical data visualization library based on Matplotlib that provides a high-level interface.", tags: ["Statistics", "Visualization", "Plotting"], install: "pip install seaborn", project: { title: "Titanic Survival Analysis", description: "Create insightful statistical plots to explore factors influencing survival in the classic Titanic dataset.", features: ["Create a heatmap of feature correlations", "Use countplots and barplots for categorical data", "Use a violinplot for age distributions"] }, math_concepts: ["Statistical Distributions", "Correlation and Covariance", "Regression analysis concepts"] },
+
+        // Traditional ML
+        { name: "Scikit-learn", category: "Traditional ML", icon: "⚙️", popularity: "essential", description: "Simple and efficient tools for predictive data analysis and classical machine learning.", tags: ["Classification", "Regression", "Clustering"], install: "pip install scikit-learn", project: { title: "House Price Predictor", description: "Train a regression model to predict house prices based on features like area, bedrooms, and location.", features: ["Implement a full ML pipeline (preprocessing, training, evaluation)", "Train multiple models (Linear Regression, RandomForest)", "Evaluate with MSE and R-squared"] }, math_concepts: ["Linear Algebra", "Probability & Statistics", "Calculus (Gradient Descent basics)"] },
+        { name: "XGBoost", category: "Traditional ML", icon: "⚙️", popularity: "important", description: "An optimized distributed gradient boosting library designed to be highly efficient and flexible.", tags: ["Boosting", "Performance", "Competition"], install: "pip install xgboost", project: { title: "Customer Churn Prediction", description: "Build a high-performance model to predict if a customer will unsubscribe from a service.", features: ["Train a powerful XGBoost classifier", "Perform hyperparameter tuning with cross-validation", "Analyze feature importance"] }, math_concepts: ["Calculus (Gradients, Hessians)", "Decision Trees & Ensemble Methods", "Loss Functions (Log-Loss)"] },
+        { name: "LightGBM", category: "Traditional ML", icon: "⚙️", popularity: "important", description: "A gradient boosting framework that uses tree-based learning algorithms, known for its speed.", tags: ["Boosting", "Fast", "Performance"], install: "pip install lightgbm", project: { title: "Credit Card Fraud Detection", description: "Train a fast and efficient LightGBM model to detect fraudulent transactions in a large dataset.", features: ["Handle highly imbalanced data", "Optimize for speed and accuracy", "Evaluate using precision, recall, and AUC"] }, math_concepts: ["Calculus (Gradients)", "Decision Trees", "Information Theory (Gain)"] },
+
+        // Deep Learning
+        { name: "PyTorch", category: "Deep Learning", icon: "🧠", popularity: "essential", description: "An open source machine learning framework that accelerates the path from research to production.", tags: ["Dynamic Graphs", "Research", "Tensors"], install: "pip install torch torchvision torchaudio", project: { title: "Handwritten Digit Recognizer (MNIST)", description: "Build and train a Convolutional Neural Network (CNN) to recognize handwritten digits.", features: ["Define a custom CNN architecture", "Write a complete training and validation loop", "Calculate accuracy and loss"] }, math_concepts: ["Linear Algebra (Tensors, Matrix Multiplication)", "Calculus (Chain Rule for Backpropagation)", "Probability (Loss Functions, Softmax)"] },
+        { name: "TensorFlow", category: "Deep Learning", icon: "🧠", popularity: "essential", description: "An end-to-end open source platform for machine learning, with a focus on production and deployment.", tags: ["Production", "Ecosystem", "Keras"], install: "pip install tensorflow", project: { title: "Handwritten Digit Recognizer (MNIST)", description: "Build and train a neural network using TensorFlow and its high-level Keras API.", features: ["Use tf.keras.Sequential to build a CNN", "Train the model using model.fit()", "Leverage TensorBoard for visualization"] }, math_concepts: ["Linear Algebra (Tensors)", "Calculus (Gradients, Backpropagation)", "Graph Theory (for computation graphs)"] },
+        { name: "Keras", category: "Deep Learning", icon: "🧠", popularity: "important", description: "The user-friendly high-level API for building and training deep learning models in TensorFlow.", tags: ["High-level", "User-friendly", "Prototyping"], install: "pip install keras", project: { title: "Dog vs. Cat Image Classifier", description: "Use Keras's simple API to distinguish between dog and cat images from a dataset.", features: ["Use the Sequential API to define a CNN", "Leverage ImageDataGenerator for data augmentation", "Train the model with model.fit() and evaluate"] }, math_concepts: ["Linear Algebra (Convolution operation)", "Calculus (Gradient-based optimization)", "Probability (Classification metrics)"] },
+
+        // Natural Language Processing
+        { name: "Hugging Face Transformers", category: "Natural Language Processing", icon: "💬", popularity: "essential", description: "The state-of-the-art library for NLP, providing thousands of pre-trained models.", tags: ["SOTA", "LLM", "Transformers"], install: "pip install transformers", project: { title: "Sentiment Analysis App", description: "Build a tool that analyzes text and classifies its sentiment as positive, negative, or neutral.", features: ["Use the pipeline API for zero-shot classification", "Load a pre-trained model like BERT or DistilBERT", "Create a simple UI to test custom text"] }, math_concepts: ["Linear Algebra (Vector Embeddings, Attention Matrices)", "Probability & Statistics (Language Models)", "Information Theory"] },
+        { name: "spaCy", category: "Natural Language Processing", icon: "💬", popularity: "important", description: "An industrial-strength NLP library in Python, designed for speed and production use.", tags: ["Production", "Fast", "NER"], install: "pip install spacy", project: { title: "Named Entity Recognition (NER) Service", description: "Extract entities like people, organizations, and locations from news articles.", features: ["Load a pre-trained spaCy model", "Iterate through document entities (doc.ents)", "Visualize the results with displaCy"] }, math_concepts: ["Linear Algebra (Word Vectors)", "Statistics (Conditional Random Fields basics)", "Graph theory (for dependency parsing)"] },
+        { name: "NLTK", category: "Natural Language Processing", icon: "💬", popularity: "useful", description: "The original and comprehensive library for NLP, great for learning fundamental concepts.", tags: ["Academic", "Learning", "Tokenization"], install: "pip install nltk", project: { title: "Text Preprocessing Pipeline", description: "Build a complete text cleaning and preprocessing pipeline for NLP tasks.", features: ["Implement tokenization and stemming/lemmatization", "Remove stopwords", "Calculate word frequencies"] }, math_concepts: ["Set Theory", "String Algorithms", "Basic Statistics"] },
+        
+        // Computer Vision
+        { name: "OpenCV", category: "Computer Vision", icon: "👁️", popularity: "essential", description: "The definitive open source library for computer vision, image processing, and real-time video analysis.", tags: ["Real-time", "Image-Processing", "Video"], install: "pip install opencv-python", project: { title: "Real-time Face Detection", description: "Use your computer's webcam to detect human faces in a live video feed.", features: ["Capture video feed from a webcam", "Load a pre-trained Haar Cascade or DNN classifier", "Draw bounding boxes on detected faces"] }, math_concepts: ["Linear Algebra (Matrix transformations, kernels)", "Geometry (Lines, shapes, contours)", "Signal Processing"] },
+        { name: "Pillow", category: "Computer Vision", icon: "👁️", popularity: "important", description: "The friendly Python Imaging Library fork, essential for basic image manipulation tasks.", tags: ["Images", "Manipulation", "PIL"], install: "pip install Pillow", project: { title: "Automated Watermarking Bot", description: "Create a script that automatically adds a logo watermark to all images in a specified folder.", features: ["Open source images and watermark images", "Composite the watermark onto each image", "Save the results to a new directory"] }, math_concepts: ["Coordinate Systems (Pixel coordinates)", "Linear Algebra (for transformations)", "Color Theory (RGB, RGBA)"] },
+
+        // MLOps
+        { name: "MLflow", category: "MLOps", icon: "📈", popularity: "important", description: "An open source platform to manage the complete ML lifecycle, including experimentation and deployment.", tags: ["Lifecycle", "Tracking", "Experiments"], install: "pip install mlflow", project: { title: "ML Experiment Tracker", description: "Integrate MLflow into an existing ML project to log and compare different model runs.", features: ["Log hyperparameters and evaluation metrics", "Save the trained model as a logged artifact", "Launch the MLflow UI to compare results"] }, math_concepts: ["Descriptive Statistics", "Experimental Design Principles"] },
+        { name: "DVC", category: "MLOps", icon: "📈", popularity: "useful", description: "Data Version Control - a Git-like system for versioning data and models.", tags: ["Versioning", "Reproducibility", "Data"], install: "pip install dvc", project: { title: "Version Control for Your Dataset", description: "Use DVC to version a large dataset or model file without checking it directly into Git.", features: ["Initialize DVC in a Git repository", "Use 'dvc add' to track a file", "Configure remote storage (like S3 or Google Drive)"] }, math_concepts: ["Hashing Algorithms (conceptual)", "Graph Theory (DAGs for pipelines)"] },
+
+        // Generative AI
+        { name: "Diffusers", category: "Generative AI", icon: "🎨", popularity: "important", description: "From Hugging Face, the go-to library for state-of-the-art pretrained diffusion models.", tags: ["Diffusion", "Images", "Audio"], install: "pip install diffusers transformers accelerate", project: { title: "Text-to-Image Generator", description: "Build an application that generates images from user text prompts using a model like Stable Diffusion.", features: ["Load a pre-trained pipeline from Hugging Face Hub", "Take a text prompt as input", "Run the pipeline and save or display the image"] }, math_concepts: ["Probability (Stochastic Processes, Gaussian Noise)", "Calculus (Differential Equations)", "Linear Algebra"] },
+        { name: "LangChain", category: "Generative AI", icon: "🎨", popularity: "important", description: "A framework for developing applications powered by large language models (LLMs).", tags: ["LLM-Apps", "Chains", "Agents"], install: "pip install langchain", project: { title: "Q&A Bot for a Website", description: "Create a chatbot that can answer questions based on the content of a specific website or document.", features: ["Use DocumentLoaders to ingest data", "Create vector embeddings of the text", "Build a Retrieval-Augmented Generation (RAG) chain"] }, math_concepts: ["Linear Algebra (Vector Stores, Cosine Similarity)", "NLP Statistics", "Graph Theory (for chains)"] },
+
+        // Time Series
+        { name: "Statsmodels", category: "Time Series", icon: "🕰️", popularity: "important", description: "Provides classes and functions for the estimation of many different statistical models.", tags: ["Statistics", "ARIMA", "Econometrics"], install: "pip install statsmodels", project: { title: "Stock Price Forecaster", description: "Use classical time series models like ARIMA to forecast future stock prices.", features: ["Decompose time series into trend and seasonality", "Fit an ARIMA or SARIMA model", "Plot the forecast with confidence intervals"] }, math_concepts: ["Time Series Analysis (Autocorrelation, Stationarity)", "Probability & Statistics (AR, MA, I models)", "Optimization"] },
+        { name: "Prophet", category: "Time Series", icon: "🕰️", popularity: "important", description: "A forecasting procedure implemented in R and Python. It is fast and provides completely automated forecasts.", tags: ["Forecasting", "Automatic", "Facebook"], install: "pip install prophet", project: { title: "Website Traffic Forecaster", description: "Forecast daily website traffic for the next year, including seasonality and holidays.", features: ["Fit a Prophet model with a single line of code", "Plot the forecast components (trend, weekly, yearly)", "Analyze trend changepoints"] }, math_concepts: ["Generalized Additive Models (GAMs)", "Fourier Series for seasonality", "Bayesian Statistics"] },
+        { name: "sktime", category: "Time Series", icon: "🕰️", popularity: "useful", description: "A scikit-learn compatible Python toolbox for learning with time series.", tags: ["Framework", "Scikit-learn like", "Forecasting"], install: "pip install sktime", project: { title: "Appliance Energy Consumption Prediction", description: "Use sktime's unified interface to predict household energy usage.", features: ["Test multiple forecasting models easily", "Perform temporal cross-validation", "Build a pipeline with time series transformations"] }, math_concepts: ["Time Series concepts", "Statistics for various models", "Cross-validation principles"] },
+    ];
+
+
+    const categoryGrid = document.getElementById('category-grid');
+    const libraryCountEl = document.getElementById('library-count');
+    const categoryCountEl = document.getElementById('category-count');
+    const projectCountEl = document.getElementById('project-count');
+    const searchBox = document.getElementById('search-box');
+    const filterButtons = document.getElementById('filter-buttons');
+    const modal = document.getElementById('project-modal');
+    let activeFilter = 'all';
+
+    function renderLibraries() {
+        const groupedByCategory = librariesData.reduce((acc, lib) => {
+            acc[lib.category] = acc[lib.category] || { icon: lib.icon, libraries: [] };
+            acc[lib.category].libraries.push(lib);
+            return acc;
+        }, {});
+
+        categoryGrid.innerHTML = '';
+        const categoryOrder = ["Foundation & Core", "Traditional ML", "Deep Learning", "Natural Language Processing", "Computer Vision", "Time Series", "Generative AI", "MLOps"];
+
+        for (const categoryName of categoryOrder) {
+            if (!groupedByCategory[categoryName]) continue;
+            const categoryData = groupedByCategory[categoryName];
+            
+            const categoryDiv = document.createElement('div');
+            categoryDiv.className = 'category';
+            categoryDiv.dataset.category = categoryName;
+
+            let librariesHTML = '';
+            categoryData.libraries.forEach(lib => {
+                librariesHTML += `
+                    <div class="library-card" data-name="${lib.name}" data-popularity="${lib.popularity}" data-tags="${lib.tags.join(' ').toLowerCase()} ${lib.description.toLowerCase()}">
+                        <div class="popularity-indicator ${lib.popularity}" title="${lib.popularity.charAt(0).toUpperCase() + lib.popularity.slice(1)}"></div>
+                        <div class="library-name">${lib.name}</div>
+                        <div class="library-description">${lib.description}</div>
+                    </div>
+                `;
+            });
+
+            categoryDiv.innerHTML = `
+                <div class="category-header">
+                    <div class="category-icon">${categoryData.icon}</div>
+                    <div class="category-info">
+                        <h2>${categoryName}</h2>
+                        <span class="category-count">${categoryData.libraries.length} libraries</span>
+                    </div>
+                </div>
+                <div class="libraries-grid">
+                    ${librariesHTML}
+                </div>
+            `;
+            categoryGrid.appendChild(categoryDiv);
+        }
+        updateStats(groupedByCategory);
+    }
+    
+    function updateStats(groupedData) {
+        libraryCountEl.textContent = librariesData.length + "+";
+        categoryCountEl.textContent = Object.keys(groupedData).length;
+        projectCountEl.textContent = librariesData.filter(lib => lib.project).length + "+";
+    }
+
+    window.filterAndSearch = function() {
+        const searchTerm = searchBox.value.toLowerCase();
+        const categories = categoryGrid.querySelectorAll('.category');
+
+        categories.forEach(category => {
+            const libraries = category.querySelectorAll('.library-card');
+            let visibleLibraries = 0;
+
+            libraries.forEach(lib => {
+                const name = lib.dataset.name.toLowerCase();
+                const tagsAndDesc = lib.dataset.tags;
+                const popularity = lib.dataset.popularity;
+                const libCategoryName = category.dataset.category;
+
+                const matchesSearch = name.includes(searchTerm) || tagsAndDesc.includes(searchTerm);
+                
+                let matchesFilter = false;
+                if (activeFilter === 'all') {
+                    matchesFilter = true;
+                } else if (activeFilter === 'essential') {
+                    matchesFilter = popularity === 'essential';
+                } else {
+                    matchesFilter = libCategoryName === activeFilter;
+                }
+
+                if (matchesSearch && matchesFilter) {
+                    lib.style.display = 'block';
+                    visibleLibraries++;
+                } else {
+                    lib.style.display = 'none';
+                }
+            });
+
+            if (visibleLibraries > 0) {
+                category.style.display = 'flex';
+            } else {
+                category.style.display = 'none';
+            }
+        });
+    }
+
+    filterButtons.addEventListener('click', (e) => {
+        if (e.target.tagName === 'BUTTON') {
+            filterButtons.querySelector('.active').classList.remove('active');
+            e.target.classList.add('active');
+            activeFilter = e.target.dataset.filter;
+            filterAndSearch();
+        }
+    });
+
+    function openModal(libData) {
+        document.getElementById('modal-library-name').textContent = libData.name;
+        document.getElementById('modal-project-title').textContent = libData.project.title;
+        document.getElementById('modal-project-description').textContent = libData.project.description;
+        
+        const featuresList = document.getElementById('modal-project-features');
+        featuresList.innerHTML = '';
+        libData.project.features.forEach(feature => {
+            const li = document.createElement('li');
+            li.textContent = feature;
+            featuresList.appendChild(li);
+        });
+        
+        const mathConceptsList = document.getElementById('modal-math-concepts');
+        mathConceptsList.innerHTML = '';
+        libData.math_concepts.forEach(concept => {
+            const li = document.createElement('li');
+            li.textContent = concept;
+            mathConceptsList.appendChild(li);
+        });
+
+        document.getElementById('modal-install-command').textContent = libData.install;
+        modal.style.display = 'flex';
+    }
+
+    window.closeModal = function() {
+        modal.style.display = 'none';
+    }
+    
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            closeModal();
+        }
+    }
+
+    categoryGrid.addEventListener('click', (e) => {
+        const card = e.target.closest('.library-card');
+        if (card) {
+            const libName = card.dataset.name;
+            const libData = librariesData.find(lib => lib.name === libName);
+            if (libData && libData.project) {
+                openModal(libData);
+            }
+        }
+    });
+
+    window.copyCommand = function(button) {
+        const commandText = document.getElementById('modal-install-command').textContent;
+        navigator.clipboard.writeText(commandText).then(() => {
+            button.textContent = 'Copied!';
+            setTimeout(() => { button.textContent = 'Copy'; }, 2000);
+        }).catch(err => {
+            console.error('Failed to copy text: ', err);
+            // Fallback for older browsers
+            const textArea = document.createElement("textarea");
+            textArea.value = commandText;
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                button.textContent = 'Copied!';
+                setTimeout(() => { button.textContent = 'Copy'; }, 2000);
+            } catch (err) {
+                button.textContent = 'Failed!';
+                setTimeout(() => { button.textContent = 'Copy'; }, 2000);
+            }
+            document.body.removeChild(textArea);
+        });
+    }
+    
+    renderLibraries();
+    // Initial call to set filters correctly on load
+    filterAndSearch();
+});
+</script>
+</body>
+</html>
+
